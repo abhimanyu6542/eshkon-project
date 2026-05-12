@@ -8,6 +8,8 @@ import type { Release, Page } from "@/types/page";
 import type { Role } from "@/types/auth";
 import { getLatestRelease, saveRelease } from "@/lib/releaseStore";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
@@ -15,9 +17,11 @@ export async function POST(
   const { slug } = await params;
 
   const session = await getServerSession(authOptions);
+
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
   const role = (session.user as { role?: Role })?.role;
   if (role !== "publisher") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
