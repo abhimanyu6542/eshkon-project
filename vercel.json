@@ -3,5 +3,8 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm ci --legacy-peer-deps",
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "env": {
+    "NEXTAUTH_URL": "https://next-studio-ten.vercel.app"
+  }
 }

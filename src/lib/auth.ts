@@ -16,20 +16,6 @@ const DEMO_USERS: Array<{
   { id: "3", name: "Carol Publisher",  email: "publisher@example.com", password: "publisher123", role: "publisher" },
 ];
 
-// Derive the canonical URL for NextAuth.
-// Priority: explicit NEXTAUTH_URL → VERCEL_URL (auto-injected) → localhost fallback
-function getNextAuthUrl(): string {
-  if (process.env.NEXTAUTH_URL) return process.env.NEXTAUTH_URL;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:3000";
-}
-
-// Set before NextAuth initialises so it uses the right base URL
-// for cookies, callbacks, and redirects on every environment.
-process.env.NEXTAUTH_URL = getNextAuthUrl();
-
-const isProduction = process.env.NODE_ENV === "production";
-
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 
@@ -50,22 +36,6 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
 
-  // Explicit cookie config so the session cookie works on Vercel (HTTPS)
-  // and locally (HTTP) without manual env changes.
-  cookies: {
-    sessionToken: {
-      name: isProduction
-        ? "__Secure-next-auth.session-token"
-        : "next-auth.session-token",
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: isProduction,
-      },
-    },
-  },
-
   callbacks: {
     jwt({ token, user }: { token: JWT; user?: unknown }) {
       if (user) token.role = (user as { role: Role }).role;
@@ -84,6 +54,5 @@ export const authOptions: NextAuthOptions = {
     error:  "/login",
   },
 
-  session:  { strategy: "jwt" },
-  debug:    !isProduction,
+  session: { strategy: "jwt" },
 };
