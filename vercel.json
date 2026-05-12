@@ -3,12 +3,5 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm ci --legacy-peer-deps",
-  "regions": ["iad1"],
-  "env": {
-    "NEXTAUTH_URL": "https://your-project.vercel.app",
-    "NEXTAUTH_SECRET": "@nextauth_secret",
-    "CONTENTFUL_SPACE_ID": "@contentful_space_id",
-    "CONTENTFUL_DELIVERY_TOKEN": "@contentful_delivery_token",
-    "CONTENTFUL_PREVIEW_TOKEN": "@contentful_preview_token"
-  }
+  "regions": ["iad1"]
 }
