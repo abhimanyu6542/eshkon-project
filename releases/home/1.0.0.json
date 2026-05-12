@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "slug": "home",
+  "publishedAt": "2026-05-12T09:59:17.302Z",
+  "publishedBy": "publisher@example.com",
+  "snapshot": {
+    "pageId": "uyututth65",
+    "slug": "home",
+    "title": "Welcome to Page Studio",
+    "sections": [
+      {
+        "id": "hero-1",
+        "type": "hero",
+        "props": {
+          "heading": "Welcome to Sangita Page Studio",
+          "subheading": "A schema-driven WYSIWYG-lite editor backed by Contentful.",
+          "ctaLabel": "Open the Studio",
+          "ctaUrl": "/studio/home"
+        }
+      },
+      {
+        "id": "features-1",
+        "type": "featureGrid",
+        "props": {
+          "heading": "Why Page Studio?",
+          "features": [
+            {
+              "title": "Schema-driven",
+              "description": "Every section validated with Zod.",
+              "icon": "🔒"
+            },
+            {
+              "title": "Redux-powered",
+              "description": "All edits flow through typed Redux slices.",
+              "icon": "⚡"
+            },
+            {
+              "title": "Versioned releases",
+              "description": "Immutable SemVer-tagged snapshots.",
+              "icon": "📦"
+            }
+          ]
+        }
+      },
+      {
+        "id": "cta-1",
+        "type": "cta",
+        "props": {
+          "heading": "Ready to publish your first page?",
+          "label": "Get started",
+          "url": "/studio/home",
+          "variant": "primary"
+        }
+      }
+    ]
+  },
+  "changelog": "Removed section \"H22sM9RaRxaSBLWwLzL7b\" (type: hero)\nSection \"hero-1\": Changed prop \"heading\""
+}
