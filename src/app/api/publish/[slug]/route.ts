@@ -6,21 +6,7 @@ import { diffPages, incrementVersion, isIdentical } from "@/lib/semver";
 import { PageSchema } from "@/types/page";
 import type { Release, Page } from "@/types/page";
 import type { Role } from "@/types/auth";
-import { promises as fs } from "fs";
-import path from "path";
-import { getLatestRelease } from "@/lib/releases";
-
-const RELEASES_DIR = path.join(process.cwd(), "releases");
-
-async function saveRelease(slug: string, release: Release): Promise<void> {
-  const dir = path.join(RELEASES_DIR, slug);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(
-    path.join(dir, `${release.version}.json`),
-    JSON.stringify(release, null, 2),
-    "utf-8"
-  );
-}
+import { getLatestRelease, saveRelease } from "@/lib/releaseStore";
 
 export async function POST(
   req: NextRequest,

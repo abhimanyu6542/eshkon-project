@@ -14,10 +14,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Ensure releases dir is accessible at runtime on Vercel
-  outputFileTracingIncludes: {
-    "/api/publish/*": ["./releases/**/*"],
-  },
+
 };
 
 export default nextConfig;

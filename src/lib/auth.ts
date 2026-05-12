@@ -16,6 +16,12 @@ const DEMO_USERS: Array<{
   { id: "3", name: "Carol Publisher",  email: "publisher@example.com", password: "publisher123", role: "publisher" },
 ];
 
+// On Vercel, NEXTAUTH_URL must match the deployment URL.
+// If not explicitly set, derive it from VERCEL_URL (injected by Vercel).
+if (!process.env.NEXTAUTH_URL && process.env.VERCEL_URL) {
+  process.env.NEXTAUTH_URL = `https://${process.env.VERCEL_URL}`;
+}
+
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 
